@@ -1,0 +1,128 @@
+.results-card {
+  width: min(520px, 100%);
+  margin: 0 auto;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.trophy {
+  font-size: 2.6rem;
+  margin: 0 0 0.5rem;
+}
+
+.results-header h1 {
+  font-size: 1.6rem;
+  line-height: 1.3;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  margin: 0.6rem 0 0;
+  font-size: 0.92rem;
+}
+
+.final-score {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.6rem;
+  margin: 2rem 0;
+}
+
+.final-pill {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.final-pill .pill-name {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.final-pill .pill-score {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+.final-pill.mark-x .pill-score {
+  color: var(--color-x);
+}
+
+.final-pill.mark-o .pill-score {
+  color: var(--color-o);
+}
+
+.final-pill.draws .pill-score {
+  color: var(--color-draw);
+}
+
+.breakdown-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.9rem;
+  text-align: left;
+}
+
+.breakdown-list {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.55rem 0.9rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.game-label {
+  color: var(--color-text-muted);
+}
+
+.game-outcome {
+  font-weight: 600;
+}
+
+.game-outcome.draw {
+  color: var(--color-draw);
+}
+
+.play-again-button {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--color-x), var(--color-draw));
+  color: #10121a;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+.play-again-button:hover {
+  transform: translateY(-1px);
+}

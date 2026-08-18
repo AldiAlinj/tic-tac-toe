@@ -1,0 +1,189 @@
+.setup-card {
+  width: min(560px, 100%);
+  margin: 0 auto;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem;
+}
+
+.setup-header {
+  margin-bottom: 2rem;
+}
+
+.setup-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.setup-header .accent {
+  color: var(--color-x);
+}
+
+.subtitle {
+  margin: 0.5rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.players-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 520px) {
+  .players-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.player-field label,
+.field-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.player-field input {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 0.9rem;
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border-color 0.15s ease;
+}
+
+.player-field input.invalid {
+  border-color: var(--color-danger);
+}
+
+.field-error {
+  margin: 0.4rem 0 0;
+  color: var(--color-danger);
+  font-size: 0.82rem;
+}
+
+.field-error.form-level {
+  margin-bottom: 1.25rem;
+}
+
+.mark-picker,
+.best-of-picker {
+  margin-bottom: 1.75rem;
+}
+
+.mark-options {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.mark-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: var(--color-surface);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.mark-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mark-glyph {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.mark-option .mark-x {
+  color: var(--color-x);
+}
+
+.mark-option .mark-o {
+  color: var(--color-o);
+}
+
+.mark-option.selected {
+  border-color: var(--color-x);
+  background: var(--color-x-soft);
+}
+
+.mark-option:has(input[value='O']).selected {
+  border-color: var(--color-o);
+  background: var(--color-o-soft);
+}
+
+.mark-hint {
+  margin: 0.6rem 0 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.best-of-options {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.best-of-option {
+  flex: 1;
+  text-align: center;
+  padding: 0.65rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: var(--color-surface);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.best-of-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.best-of-option.selected {
+  border-color: var(--color-draw);
+  background: rgba(199, 166, 242, 0.15);
+  color: var(--color-draw);
+}
+
+.start-button {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--color-x), var(--color-draw));
+  color: #10121a;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.start-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -8px rgba(95, 208, 217, 0.45);
+}
+
+.start-button:active {
+  transform: translateY(0);
+}

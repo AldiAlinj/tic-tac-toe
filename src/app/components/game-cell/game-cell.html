@@ -1,0 +1,13 @@
+<button
+  type="button"
+  class="cell"
+  [class.filled]="value !== null"
+  [class.mark-x]="value === 'X'"
+  [class.mark-o]="value === 'O'"
+  [class.winning]="isWinningCell"
+  [disabled]="disabled || value !== null"
+  [attr.aria-label]="value ? ('Cell ' + (index + 1) + ', ' + value) : ('Cell ' + (index + 1) + ', empty')"
+  (click)="onClick()"
+>
+  {{ value }}
+</button>

@@ -1,0 +1,30 @@
+<section class="board-screen">
+  <app-scoreboard />
+
+  @if (vm$ | async; as vm) {
+    <div class="board-wrapper">
+      <div class="board" [class.settled]="vm.status !== 'in-progress'">
+        @for (cell of vm.board; track $index) {
+          <app-game-cell
+            [value]="cell"
+            [index]="$index"
+            [disabled]="vm.status !== 'in-progress'"
+            [isWinningCell]="isWinningCell($index, vm.winningLine)"
+            (cellClick)="onCellClick($index)"
+          />
+        }
+      </div>
+
+      @if (vm.status !== 'in-progress') {
+        <div class="round-banner">
+          @if (vm.status === 'won') {
+            <p class="round-result">🏆 {{ vm.lastMoverName }} wins this round!</p>
+          } @else {
+            <p class="round-result">🤝 This round is a draw.</p>
+          }
+          <button type="button" class="next-button" (click)="onNextGame()">Next Game →</button>
+        </div>
+      }
+    </div>
+  }
+</section>

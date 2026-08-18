@@ -1,0 +1,99 @@
+.scoreboard {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.game-progress {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.scores {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.score-pill {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 88px;
+}
+
+.score-pill.mark-x {
+  border-color: rgba(95, 208, 217, 0.4);
+}
+
+.score-pill.mark-o {
+  border-color: rgba(242, 134, 94, 0.4);
+}
+
+.pill-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+.pill-mark {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+.pill-score {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+.score-pill.mark-x .pill-score {
+  color: var(--color-x);
+}
+
+.score-pill.mark-o .pill-score {
+  color: var(--color-o);
+}
+
+.score-pill.draws .pill-score {
+  color: var(--color-draw);
+}
+
+.turn-indicator {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.turn-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+}
+
+.turn-dot.mark-x {
+  background: var(--color-x);
+}
+
+.turn-dot.mark-o {
+  background: var(--color-o);
+}

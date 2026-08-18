@@ -1,0 +1,85 @@
+<section class="setup-card">
+  <header class="setup-header">
+    <h1>Tic&nbsp;Tac&nbsp;Toe <span class="accent">Tournament</span></h1>
+    <p class="subtitle">Set up your match before the first game begins.</p>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="players-row">
+      <div class="player-field">
+        <label for="player1Name">Player 1 name</label>
+        <input
+          id="player1Name"
+          type="text"
+          formControlName="player1Name"
+          placeholder="e.g. Alex"
+          [class.invalid]="showError('player1Name')"
+          autocomplete="off"
+        />
+        @if (showError('player1Name')) {
+          <p class="field-error">
+            @if (form.controls.player1Name.hasError('required')) {
+              Player 1's name is required.
+            } @else if (form.controls.player1Name.hasError('maxlength')) {
+              Keep names under 20 characters.
+            }
+          </p>
+        }
+      </div>
+
+      <div class="player-field">
+        <label for="player2Name">Player 2 name</label>
+        <input
+          id="player2Name"
+          type="text"
+          formControlName="player2Name"
+          placeholder="e.g. Sam"
+          [class.invalid]="showError('player2Name')"
+          autocomplete="off"
+        />
+        @if (showError('player2Name')) {
+          <p class="field-error">
+            @if (form.controls.player2Name.hasError('required')) {
+              Player 2's name is required.
+            } @else if (form.controls.player2Name.hasError('maxlength')) {
+              Keep names under 20 characters.
+            }
+          </p>
+        }
+      </div>
+    </div>
+
+    @if (form.hasError('namesIdentical') && (form.controls.player2Name.touched || form.controls.player2Name.dirty)) {
+      <p class="field-error form-level">Player names must be different.</p>
+    }
+
+    <div class="mark-picker">
+      <span class="field-label">Player 1 plays as</span>
+      <div class="mark-options" role="radiogroup" aria-label="Player 1 mark">
+        <label class="mark-option" [class.selected]="form.controls.player1Mark.value === 'X'">
+          <input type="radio" formControlName="player1Mark" value="X" />
+          <span class="mark-glyph mark-x">X</span>
+        </label>
+        <label class="mark-option" [class.selected]="form.controls.player1Mark.value === 'O'">
+          <input type="radio" formControlName="player1Mark" value="O" />
+          <span class="mark-glyph mark-o">O</span>
+        </label>
+      </div>
+      <p class="mark-hint">Player 2 automatically plays as <strong>{{ player2Mark }}</strong>.</p>
+    </div>
+
+    <div class="best-of-picker">
+      <span class="field-label">Tournament length</span>
+      <div class="best-of-options" role="radiogroup" aria-label="Number of games">
+        @for (option of bestOfOptions; track option) {
+          <label class="best-of-option" [class.selected]="form.controls.bestOf.value === option">
+            <input type="radio" formControlName="bestOf" [value]="option" />
+            <span>Best of {{ option }}</span>
+          </label>
+        }
+      </div>
+    </div>
+
+    <button type="submit" class="start-button">Start Tournament</button>
+  </form>
+</section>

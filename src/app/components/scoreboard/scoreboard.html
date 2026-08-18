@@ -1,0 +1,35 @@
+@if (vm$ | async; as vm) {
+  @if (vm.players) {
+    <section class="scoreboard">
+      <div class="game-progress">
+        Game {{ vm.currentGameNumber }} of {{ vm.bestOf }}
+      </div>
+
+      <div class="scores">
+        <div class="score-pill" [class.mark-x]="vm.players[0].mark === 'X'" [class.mark-o]="vm.players[0].mark === 'O'">
+          <span class="pill-name">{{ vm.players[0].name }}</span>
+          <span class="pill-mark">{{ vm.players[0].mark }}</span>
+          <span class="pill-score">{{ vm.scoreboard.player1Wins }}</span>
+        </div>
+
+        <div class="score-pill draws">
+          <span class="pill-name">Draws</span>
+          <span class="pill-score">{{ vm.scoreboard.draws }}</span>
+        </div>
+
+        <div class="score-pill" [class.mark-x]="vm.players[1].mark === 'X'" [class.mark-o]="vm.players[1].mark === 'O'">
+          <span class="pill-name">{{ vm.players[1].name }}</span>
+          <span class="pill-mark">{{ vm.players[1].mark }}</span>
+          <span class="pill-score">{{ vm.scoreboard.player2Wins }}</span>
+        </div>
+      </div>
+
+      @if (vm.status === 'in-progress' && vm.currentPlayer) {
+        <p class="turn-indicator">
+          <span class="turn-dot" [class.mark-x]="vm.currentPlayer.mark === 'X'" [class.mark-o]="vm.currentPlayer.mark === 'O'"></span>
+          {{ vm.currentPlayer.name }}'s turn ({{ vm.currentPlayer.mark }})
+        </p>
+      }
+    </section>
+  }
+}

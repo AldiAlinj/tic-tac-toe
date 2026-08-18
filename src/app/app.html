@@ -1,0 +1,15 @@
+<main class="app-shell">
+  @if (phase$ | async; as phase) {
+    @switch (phase) {
+      @case ('setup') {
+        <app-player-setup />
+      }
+      @case ('playing') {
+        <app-game-board />
+      }
+      @case ('tournament-complete') {
+        <app-tournament-results />
+      }
+    }
+  }
+</main>

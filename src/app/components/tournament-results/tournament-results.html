@@ -1,0 +1,53 @@
+@if (vm$ | async; as vm) {
+  @if (vm.players) {
+    <section class="results-card">
+      <header class="results-header">
+        @if (vm.tournamentWinner === 'draw') {
+          <p class="trophy">🤝</p>
+          <h1>It's a tied tournament!</h1>
+          <p class="subtitle">Nobody edged it out over {{ vm.bestOf }} game(s).</p>
+        } @else {
+          <p class="trophy">🏆</p>
+          <h1>
+            {{ vm.tournamentWinner === 'player1' ? vm.players[0].name : vm.players[1].name }}
+            wins the tournament!
+          </h1>
+          <p class="subtitle">Best of {{ vm.bestOf }} — decided after {{ vm.gameResults.length }} game(s).</p>
+        }
+      </header>
+
+      <div class="final-score">
+        <div class="final-pill" [class.mark-x]="vm.players[0].mark === 'X'" [class.mark-o]="vm.players[0].mark === 'O'">
+          <span class="pill-name">{{ vm.players[0].name }}</span>
+          <span class="pill-score">{{ vm.scoreboard.player1Wins }}</span>
+        </div>
+        <div class="final-pill draws">
+          <span class="pill-name">Draws</span>
+          <span class="pill-score">{{ vm.scoreboard.draws }}</span>
+        </div>
+        <div class="final-pill" [class.mark-x]="vm.players[1].mark === 'X'" [class.mark-o]="vm.players[1].mark === 'O'">
+          <span class="pill-name">{{ vm.players[1].name }}</span>
+          <span class="pill-score">{{ vm.scoreboard.player2Wins }}</span>
+        </div>
+      </div>
+
+      <h2 class="breakdown-title">Game-by-game breakdown</h2>
+      <ul class="breakdown-list">
+        @for (result of vm.gameResults; track result.gameNumber) {
+          <li class="breakdown-item">
+            <span class="game-label">Game {{ result.gameNumber }}</span>
+            <span
+              class="game-outcome"
+              [class.draw]="result.outcome === 'draw'"
+            >
+              {{ outcomeLabel(result.outcome, vm.players) }}
+              {{ result.outcome === 'draw' ? '' : 'won' }}
+            </span>
+          </li>
+        }
+      </ul>
+
+      <button type="button" class="play-again-button" (click)="playAgain()">Play Again</button>
+    </section>
+  }
+}

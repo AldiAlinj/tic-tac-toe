@@ -1,0 +1,66 @@
+/* Global design tokens & resets ------------------------------------------------ */
+:root {
+  --color-bg: #14161f;
+  --color-bg-elevated: #1c1f2b;
+  --color-surface: #232738;
+  --color-border: #33384d;
+  --color-text: #edeef5;
+  --color-text-muted: #9498ac;
+  --color-x: #5fd0d9;
+  --color-x-soft: rgba(95, 208, 217, 0.15);
+  --color-o: #f2865e;
+  --color-o-soft: rgba(242, 134, 94, 0.15);
+  --color-draw: #c7a6f2;
+  --color-danger: #f2607a;
+  --color-success: #7fd88f;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --font-display: 'Segoe UI', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+
+  --shadow-card: 0 20px 60px -20px rgba(0, 0, 0, 0.65);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% -10%, #232a3d 0%, var(--color-bg) 55%);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-x);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
