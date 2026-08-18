@@ -92,7 +92,12 @@ describe('TournamentStore', () => {
     winGameForPlayer1();
     expect(latest(store.phase$)).toBe('playing');
     store.startNextGame();
-    winGameForPlayer1();
+    store.playCell(3);
+    store.playCell(0);
+    store.playCell(4);
+    store.playCell(1);
+    store.playCell(8);
+    store.playCell(2);
 
     expect(latest(store.phase$)).toBe('tournament-complete');
     expect(latest(store.tournamentWinner$)).toBe('player1');
