@@ -63,8 +63,7 @@ export class TournamentStore {
   /** The single BehaviorSubject holding all state. Private so components can never bypass the API below. */
   private readonly state$$ = new BehaviorSubject<TournamentState>(initialState());
 
-  /** Read-only stream of the full state, exposed for anything that needs more than one slice at once. */
-  readonly state$: Observable<TournamentState> = this.state$$.asObservable();
+
 
   // ---- Derived selectors ----
   readonly phase$: Observable<AppPhase> = this.select((s) => s.phase);
